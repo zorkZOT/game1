@@ -1,0 +1,55 @@
+<meta charset="utf-8"> 
+<script> 
+
+    play();
+
+    function play() {
+        var name = getName();
+        if (name) { // Если имя задано, то мы играем дальше
+            alert(name + ", предлагаю сыграть тебе в игру");
+            playGame();
+        }
+    }
+    
+    function playGame(count1 = 0, count2 = 0) {
+        var a = setAngle();
+        if ( (a>=20)&&(a<=40)||(a>=70)&&(a<=120) ) { 
+            count1 = count1 + 1;
+            alert("Поздравляю, ты убил красного гуся");
+        } else if (a == 180) { 
+            count2 = count2 + 1;
+            alert("Ты ёбаный волшебник! Ты попал в Надьку Ерёмину");
+        } else { 
+            alert("Промах!");
+        }
+        alert("Ты убил гусей: " + count1 + ". Ты убил Надек: " + count2);
+        //var finish = prompt("Если хочешь закончить игру, введи 1");
+        //if (finish != 1) {
+            playGame(count1, count2);
+        //}
+    }
+    
+    function getName() {
+        var name = prompt("Как вас зовут?");
+        if (name == null) {
+            alert('Пока');
+            return false;
+        } else if (name == "") {
+            alert("Вводи имя!!!");
+            return getName();
+        } else {
+            return name;
+        }
+    }
+    
+    function setAngle() {
+        var a = parseInt(prompt("Введи угол, под которым будешь стрелять (от 0 до 180):")); 
+        if (isNaN(a) || (a<0 && a>180)) { 
+            a = parseInt(prompt("Вводи ЧИСЛО, а не буквы от 0 до 180, додик блэд):")); 
+        } 
+        
+        return a;
+    }
+    
+
+</script>
